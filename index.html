@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Мир Мебели — кухни, шкафы и мебель по индивидуальным размерам</title>
+  <meta name="description" content="Мир Мебели: кухни, шкафы-купе, гардеробные, гостиные, спальни и прихожие по вашим размерам. Бесплатный замер и 3D-проект, онлайн-калькулятор стоимости.">
+  <meta name="theme-color" content="#0a0a0b">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Мир Мебели — кухни, шкафы и мебель по индивидуальным размерам">
+  <meta property="og:description" content="Мир Мебели: кухни, шкафы-купе, гардеробные, гостиные, спальни и прихожие по вашим размерам. Бесплатный замер и 3D-проект, онлайн-калькулятор стоимости.">
+  <meta property="og:image" content="assets/img/kitchen-graphite.jpg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/montserrat-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="lg-gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f0d8b6"/><stop offset=".5" stop-color="#c9a27a"/><stop offset="1" stop-color="#a07850"/>
+    </linearGradient>
+    <symbol id="i-logo" viewBox="0 0 64 64">
+      <path d="M55 15V7H7v50h41" fill="none" stroke="url(#lg-gold)" stroke-width="3"/>
+      <rect x="12" y="13" width="12" height="37" fill="#3a3a3e"/>
+      <rect x="26" y="14" width="33" height="12" fill="#3a3a3e"/>
+      <rect x="26" y="27.5" width="33" height="9" fill="#d9bf9a"/>
+      <rect x="26" y="38" width="33" height="12" fill="#cfc7bc"/>
+      <path d="M1 57c9-5 17-9 26-8s15 6 23 6c6 0 10-2 13-5-3 5-7 8-13 8-9 0-15-6-23-7S10 53 1 57z" fill="url(#lg-gold)"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.3 4.6 13a4.9 4.9 0 0 1 0-7 5 5 0 0 1 7 0l.4.5.4-.5a5 5 0 0 1 7 0 4.9 4.9 0 0 1 0 7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.5 3.5h3l1.5 4-2 1.4a12 12 0 0 0 6.1 6.100l1.4-2 4 1.500v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.700a2 2 0 0 1 2-2.200z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3.5 6h17v12h-17zm0 .500 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.500a7 7 0 0 0-14 0C5 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.500V12l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.500L19 7.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 20V5m-6 6 6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 17.500h6M10 20.500h4M12 3.500a6 6 0 0 0-3.5 10.900c.600.5 1 1.2 1 2v1.100h5v-1.100c0-.800.4-1.5 1-2A6 6 0 0 0 12 3.500z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M3 7h3.500c1.5 0 2.8.700 3.6 1.900l3.8 6.200c.800 1.2 2.1 1.9 3.6 1.900H21m-3-3 3 3-3 3M3 17h3.500c1.2 0 2.3-.500 3.1-1.300M14.4 8.300c.800-.800 1.9-1.3 3.1-1.300H21m-3-3 3 3-3 3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M20.5 4.5 3.5 11l5 1.800m12-8.3-9.5 9.800m9.5-9.8-3 14.5-6.5-4.700m0 0-.500 4.2 2.7-2.800M8.5 12.800l2 5.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.2-4.300A8.3 8.3 0 1 1 8.4 19z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M9 8.500c-.300 1.5.5 3.2 2 4.600s3 2 4.5 1.700l.300-1.5-1.8-.900-.800.800c-.800-.300-1.9-1.3-2.3-2.200l.800-.800-.900-1.900z" fill="currentColor"/></symbol>
+    <symbol id="i-vk" viewBox="0 0 24 24"><path d="M3.5 7.500c.200 5.5 3.2 9 8 9h.500v-3.200c1.8.2 3.1 1.5 3.7 3.200h2.800c-.700-2.5-2.4-3.9-3.5-4.4 1.1-.700 2.6-2.2 3-4.600h-2.500c-.500 1.9-2 3.6-3.5 3.800V7.500H9.500v6.600C8 13.7 6.1 11.9 6 7.500z" fill="currentColor"/></symbol>
+    <symbol id="i-ruler" viewBox="0 0 48 48"><path d="M6 31 31 6l11 11-25 25zM13 24l4 4m1-9 3 3m2-8 4 4m1-9 3 3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-cube" viewBox="0 0 48 48"><path d="M24 5 7 14.500v19L24 43l17-9.500v-19zM7 14.5 24 24l17-9.500M24 24v19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 48 48"><path d="M4 12h24v21H4zm24 7h8l8 8v6H28z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="13" cy="35" r="4" fill="#151517" stroke="currentColor" stroke-width="1.8"/><circle cx="35" cy="35" r="4" fill="#151517" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 5 8 11v11c0 10 6.5 17.5 16 21 9.5-3.5 16-11 16-21V11z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m17 24 5 5 9-10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<div class="progress" aria-hidden="true"><i></i></div>
+
+<header class="header" data-header>
+  <div class="container header__inner">
+    <a class="logo" href="#top" aria-label="Мир Мебели — на главную">
+        <svg class="logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+        <span class="logo__text">
+          <span class="logo__name">Мир <b>Мебели</b></span>
+          <span class="logo__tag">Мебель, созданная для жизни</span>
+        </span>
+      </a>
+    <nav class="nav" aria-label="Основное меню">
+      <ul class="nav__list">
+          <li><a class="nav__link" href="catalog.html">Каталог</a></li>
+          <li><a class="nav__link" href="#calc">Калькулятор</a></li>
+          <li><a class="nav__link" href="#process">Как работаем</a></li>
+          <li><a class="nav__link" href="#about">О нас</a></li>
+          <li><a class="nav__link" href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>
+    <div class="header__actions">
+      <a class="header__phone" href="tel:+79000000000" data-site="phone">+7 (900) 000-00-00</a>
+      <a class="icon-btn" href="catalog.html?fav=1" aria-label="Избранное" title="Избранное">
+        <svg aria-hidden="true" fill="none"><use href="#i-heart"/></svg>
+        <span class="icon-btn__count" data-fav-count aria-hidden="true">0</span>
+      </a>
+      <button class="btn btn--gold btn--sm" type="button" data-open-request="Заявка на замер">Заказать замер</button>
+      <button class="burger" type="button" aria-label="Меню" aria-expanded="false" aria-controls="mobile-menu" data-burger><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu>
+  <nav aria-label="Мобильное меню">
+    <ul class="mobile-menu__list">
+      <li><a href="catalog.html"><span>01</span>Каталог</a></li>
+      <li><a href="#calc"><span>02</span>Калькулятор</a></li>
+      <li><a href="#process"><span>03</span>Как работаем</a></li>
+      <li><a href="#about"><span>04</span>О нас</a></li>
+      <li><a href="#contacts"><span>05</span>Контакты</a></li>
+    </ul>
+  </nav>
+  <div class="mobile-menu__foot">
+    <a class="mobile-menu__phone" href="tel:+79000000000" data-site="phone">+7 (900) 000-00-00</a>
+    <button class="btn btn--gold btn--block" type="button" data-open-request="Заявка на замер">Заказать замер</button>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ====================== HERO: интерактивная кухня ====================== -->
+  <section class="hero" id="top" data-hero>
+    <div class="hero__bg" aria-hidden="true"><div class="hero__glow"></div></div>
+
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow hero__fade" style="--d:.1s">Мебель, созданная для жизни</p>
+        <h1 class="h1 hero__title">
+          <span class="line"><span style="--i:0">Мир мебели,</span></span>
+          <span class="line"><span style="--i:1">в котором</span></span>
+          <span class="line"><span style="--i:2">хочется <em class="accent">жить</em></span></span>
+        </h1>
+        <p class="lead hero__fade" style="--d:.65s">Кухни, шкафы, гостиные и спальни по вашим размерам. Попробуйте прямо сейчас: выберите цвета, включите подсветку и откройте фасады нашей кухни.</p>
+        <div class="hero__cta hero__fade" style="--d:.8s">
+          <a class="btn btn--gold" href="catalog.html">Смотреть каталог <svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--line" href="#calc">Рассчитать стоимость</a>
+        </div>
+        <ul class="hero__facts hero__fade" style="--d:.95s">
+          <li><div class="fact__num">от <span data-count="14">14</span><small>дней</small></div><div class="fact__label">срок изготовления</div></li>
+          <li><div class="fact__num"><span data-count="24">24</span><small>мес.</small></div><div class="fact__label">гарантия на мебель</div></li>
+          <li><div class="fact__num">0<small>₽</small></div><div class="fact__label">замер и 3D-проект</div></li>
+        </ul>
+      </div>
+
+      <div class="kitchen" data-kitchen>
+        <div class="kitchen__stage">
+          <svg class="kitchen__svg" viewBox="0 0 640 520" role="group" aria-label="Интерактивная кухня: фасады открываются по нажатию">
+            <defs>
+              <linearGradient id="k-gold" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f3dcbc"/><stop offset=".5" stop-color="#c9a27a"/><stop offset="1" stop-color="#9c744c"/>
+              </linearGradient>
+              <linearGradient id="k-led" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#ffe3b5" stop-opacity=".95"/><stop offset=".5" stop-color="#ffc77d" stop-opacity=".3"/><stop offset="1" stop-color="#ffc77d" stop-opacity="0"/>
+              </linearGradient>
+              <linearGradient id="k-shade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity=".08"/><stop offset="1" stop-color="#000" stop-opacity=".18"/>
+              </linearGradient>
+              <linearGradient id="k-niche-off" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity=".3"/>
+              </linearGradient>
+              <filter id="k-blur" x="-50%" y="-80%" width="200%" height="260%"><feGaussianBlur stdDeviation="26"/></filter>
+              <filter id="k-soft" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="7"/></filter>
+            </defs>
+
+            <!-- рассеянный свет подсветки -->
+            <g class="k-light--intro"><ellipse class="k-light" cx="400" cy="266" rx="170" ry="60" fill="#ffb964" opacity=".22" filter="url(#k-blur)"/></g>
+            <ellipse cx="350" cy="452" rx="290" ry="9" fill="#000" opacity=".7" filter="url(#k-soft)"/>
+
+            <!-- рамка из логотипа -->
+            <path class="k-frame" d="M548 104V56H92v446h380" fill="none" stroke="url(#k-gold)" stroke-width="7"/>
+
+            <!-- колонна с холодильником -->
+            <g class="k-part" style="--i:0">
+              <rect x="112" y="98" width="100" height="344" fill="#dfe8ec"/>
+              <g stroke="#b3c0c6" stroke-width="2"><path d="M112 150h100M112 200h100M112 252h100"/></g>
+              <rect x="122" y="118" width="10" height="32" rx="3" fill="#5c8a57"/><rect x="136" y="124" width="9" height="26" rx="3" fill="#c98a3a"/><rect x="150" y="130" width="24" height="20" rx="2" fill="#f1f1ee"/><circle cx="190" cy="141" r="9" fill="#c8483a"/>
+              <rect x="124" y="176" width="30" height="24" rx="2" fill="#e6c36a"/><rect x="160" y="170" width="12" height="30" rx="3" fill="#7fa9c9"/><rect x="178" y="182" width="24" height="18" rx="9" fill="#8fb36b"/>
+              <rect x="122" y="228" width="40" height="24" rx="3" fill="#f6f6f2"/><circle cx="178" cy="242" r="10" fill="#e19a3c"/><circle cx="196" cy="244" r="8" fill="#e8b23f"/>
+              <rect x="120" y="262" width="84" height="36" rx="3" fill="#c7d6dc" opacity=".8"/>
+              <rect x="112" y="309" width="100" height="133" fill="#cfdade"/>
+              <rect x="120" y="318" width="84" height="34" rx="3" fill="#eef4f6"/><rect x="120" y="358" width="84" height="34" rx="3" fill="#eef4f6"/><rect x="120" y="398" width="84" height="36" rx="3" fill="#eef4f6"/>
+
+              <rect x="112" y="303" width="100" height="8" fill="#0d0d0f"/>
+              <g class="k-door" data-hinge="l" tabindex="0" role="button" aria-pressed="false" aria-label="Холодильник, верхняя дверь">
+                <rect class="k-fill-top" x="112" y="98" width="100" height="207"/>
+                <rect x="112" y="98" width="100" height="207" fill="url(#k-shade)"/>
+                <rect x="201" y="236" width="3" height="58" rx="1.5" fill="#0c0c0d"/>
+                <rect class="k-door__hl" x="112" y="98" width="100" height="207"/>
+              </g>
+              <g class="k-door" data-hinge="l" tabindex="0" role="button" aria-pressed="false" aria-label="Холодильник, нижняя дверь">
+                <rect class="k-fill-top" x="112" y="309" width="100" height="133"/>
+                <rect x="112" y="309" width="100" height="133" fill="url(#k-shade)"/>
+                <rect x="201" y="318" width="3" height="46" rx="1.5" fill="#0c0c0d"/>
+                <rect class="k-door__hl" x="112" y="309" width="100" height="133"/>
+              </g>
+              <rect x="116" y="442" width="92" height="7" fill="#070708"/>
+            </g>
+
+            <!-- верхние шкафы -->
+            <g class="k-part" style="--i:1">
+              <rect x="218" y="108" width="365" height="106" fill="#0d0d0f"/>
+              <g fill="#2c2c30"><rect x="218" y="160" width="365" height="2.5"/></g>
+              <!-- посуда -->
+              <g fill="#ece4d6"><rect x="232" y="153" width="46" height="3" rx="1.5"/><rect x="234" y="148.5" width="42" height="3" rx="1.5"/><rect x="236" y="144" width="38" height="3" rx="1.5"/></g>
+              <path d="M290 142h30a15 12 0 0 1-30 0z" fill="#c9a27a"/>
+              <g fill="none" stroke="#cfd8dc" stroke-width="1.5" opacity=".8"><path d="M234 186h12l-2 20h-8zM254 186h12l-2 20h-8zM274 186h12l-2 20h-8z"/></g>
+              <rect x="300" y="182" width="20" height="30" rx="3" fill="#7a5a3c"/>
+              <g fill="#d8c9b4"><rect x="356" y="132" width="18" height="28" rx="4"/><rect x="380" y="138" width="16" height="22" rx="4"/><rect x="402" y="128" width="20" height="32" rx="4"/></g>
+              <g fill="#c9a27a"><rect x="356" y="130" width="18" height="5" rx="2"/><rect x="380" y="136" width="16" height="5" rx="2"/><rect x="402" y="126" width="20" height="5" rx="2"/></g>
+              <g fill="#3d5a4a"><rect x="356" y="192" width="24" height="20" rx="3"/></g><g fill="#ece4d6"><rect x="388" y="188" width="14" height="24" rx="3"/><rect x="408" y="194" width="30" height="18" rx="9"/></g>
+              <g fill="#9a5a34"><rect x="480" y="128" width="8" height="32"/><rect x="500" y="124" width="9" height="36"/></g><g fill="#d8c9b4"><rect x="490" y="134" width="8" height="26"/><rect x="511" y="130" width="7" height="30"/></g><rect x="522" y="136" width="10" height="24" fill="#4a5240"/>
+              <path d="M484 212v-14a12 12 0 0 1 24 0v14zM520 212v-10h36v10z" fill="#ece4d6"/>
+
+              <g class="k-door" data-hinge="l" tabindex="0" role="button" aria-pressed="false" aria-label="Верхний шкаф, левый фасад">
+                <rect class="k-fill-top" x="218" y="108" width="119" height="106"/><rect x="218" y="108" width="119" height="106" fill="url(#k-shade)"/><rect class="k-door__hl" x="218" y="108" width="119" height="106"/>
+              </g>
+              <g class="k-door" data-hinge="r" tabindex="0" role="button" aria-pressed="false" aria-label="Верхний шкаф, средний фасад" data-demo>
+                <rect class="k-fill-top" x="341" y="108" width="119" height="106"/><rect x="341" y="108" width="119" height="106" fill="url(#k-shade)"/><rect class="k-door__hl" x="341" y="108" width="119" height="106"/>
+              </g>
+              <g class="k-door" data-hinge="r" tabindex="0" role="button" aria-pressed="false" aria-label="Верхний шкаф, правый фасад">
+                <rect class="k-fill-top" x="464" y="108" width="119" height="106"/><rect x="464" y="108" width="119" height="106" fill="url(#k-shade)"/><rect class="k-door__hl" x="464" y="108" width="119" height="106"/>
+              </g>
+            </g>
+
+            <!-- фартук, подсветка, столешница -->
+            <g class="k-part" style="--i:2">
+              <rect class="k-fill-stone" x="218" y="216" width="365" height="104"/>
+              <g fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="1.2"><path d="M230 300c40-22 70-8 104-30s60-10 92-28M420 312c30-14 52-4 84-22s46-6 72-20M250 240c24-8 40 2 62-8"/></g>
+              <rect class="k-dim" x="218" y="216" width="365" height="104" fill="url(#k-niche-off)"/>
+              <g class="k-light--intro"><g class="k-light">
+                <rect x="218" y="216" width="365" height="104" fill="url(#k-led)"/>
+                <rect x="218" y="216" width="365" height="3" fill="#fff0d2"/>
+              </g></g>
+              <!-- растения, смеситель, чаша -->
+              <path d="M298 304c-6-10-10-20-6-30 4 6 6 12 6 20 0-12 2-22 8-28 2 10 0 22-4 32 4-8 10-12 16-12-2 8-8 14-14 18z" fill="#3e5c3b"/>
+              <rect x="292" y="303" width="18" height="16" rx="2" fill="#19191b"/>
+              <path d="M333 308c-3-6-4-11-2-16 3 4 4 8 4 12 1-6 4-10 8-11 0 6-3 11-7 15z" fill="#4c6b45"/>
+              <rect x="328" y="307" width="13" height="12" rx="2" fill="#c08a5a"/>
+              <path d="M392 320v-30a9 9 0 0 1 18 0v5" fill="none" stroke="#0e0e10" stroke-width="3.5" stroke-linecap="round"/>
+              <rect x="386" y="304" width="5" height="3" rx="1" fill="#0e0e10"/>
+              <path d="M508 306h40a20 13 0 0 1-40 0z" fill="#131315"/>
+              <rect class="k-fill-counter" x="212" y="319" width="377" height="9"/>
+            </g>
+
+            <!-- нижние шкафы -->
+            <g class="k-part" style="--i:3">
+              <rect x="218" y="330" width="365" height="112" fill="#0d0d0f"/>
+              <rect x="218" y="386" width="365" height="2.5" fill="#2c2c30"/>
+              <g fill="#3b3b40"><rect x="234" y="356" width="48" height="30" rx="3"/><rect x="228" y="364" width="60" height="4" rx="2"/></g>
+              <g fill="#b87340"><rect x="296" y="362" width="30" height="24" rx="3"/><rect x="290" y="368" width="42" height="3.5" rx="1.7"/></g>
+              <g fill="#ece4d6"><rect x="236" y="430" width="70" height="4" rx="2"/><rect x="240" y="424" width="62" height="4" rx="2"/><rect x="244" y="418" width="54" height="4" rx="2"/></g>
+              <g fill="#56565c"><rect x="360" y="350" width="80" height="36" rx="4"/></g><rect x="366" y="356" width="68" height="18" rx="2" fill="#16161a"/><circle cx="374" cy="380" r="2" fill="#c9a27a"/><circle cx="384" cy="380" r="2" fill="#c9a27a"/>
+              <g fill="#3b3b40"><rect x="356" y="404" width="56" height="36" rx="18"/></g><rect x="420" y="410" width="26" height="30" rx="3" fill="#d8c9b4"/>
+              <g fill="#4a5240"><rect x="482" y="352" width="14" height="34" rx="4"/><rect x="502" y="358" width="12" height="28" rx="4"/></g><rect x="522" y="348" width="14" height="38" rx="4" fill="#9a5a34"/><rect x="544" y="360" width="22" height="26" rx="3" fill="#ece4d6"/>
+              <g fill="#7a5a3c"><rect x="480" y="402" width="88" height="38" rx="3"/></g><path d="M490 412h68M490 422h68M490 432h68" stroke="#5c4028" stroke-width="2"/>
+
+              <g class="k-door" data-hinge="l" tabindex="0" role="button" aria-pressed="false" aria-label="Нижний шкаф, левый фасад">
+                <rect class="k-fill-base" x="218" y="330" width="119" height="112"/><rect x="218" y="330" width="119" height="112" fill="url(#k-shade)"/><rect x="218" y="330" width="119" height="4" fill="#000" opacity=".35"/><rect class="k-door__hl" x="218" y="330" width="119" height="112"/>
+              </g>
+              <g class="k-door" data-hinge="l" tabindex="0" role="button" aria-pressed="false" aria-label="Нижний шкаф, средний фасад">
+                <rect class="k-fill-base" x="341" y="330" width="119" height="112"/><rect x="341" y="330" width="119" height="112" fill="url(#k-shade)"/><rect x="341" y="330" width="119" height="4" fill="#000" opacity=".35"/><rect class="k-door__hl" x="341" y="330" width="119" height="112"/>
+              </g>
+              <g class="k-door" data-hinge="r" tabindex="0" role="button" aria-pressed="false" aria-label="Нижний шкаф, правый фасад">
+                <rect class="k-fill-base" x="464" y="330" width="119" height="112"/><rect x="464" y="330" width="119" height="112" fill="url(#k-shade)"/><rect x="464" y="330" width="119" height="4" fill="#000" opacity=".35"/><rect class="k-door__hl" x="464" y="330" width="119" height="112"/>
+              </g>
+              <rect x="222" y="442" width="357" height="7" fill="#070708"/>
+            </g>
+
+            <!-- волна из логотипа -->
+            <path class="k-wave" d="M18 500c92-45 172-80 252-72s140 50 220 52c55 1 105-18 138-40-28 28-80 54-140 54-88 0-148-46-220-54S110 462 18 500z" fill="url(#k-gold)"/>
+          </svg>
+          <div class="kitchen__hint" data-kitchen-hint><span class="pulse" aria-hidden="true"></span>Нажмите на фасады — они открываются</div>
+        </div>
+
+        <!-- панель конструктора -->
+        <div class="cfg hero__fade" style="--d:1.2s" aria-label="Конструктор кухни">
+          <div class="cfg__rows">
+            <div class="cfg__row">
+              <span class="cfg__label" id="cfg-top">Верх</span>
+              <div class="swatches" role="radiogroup" aria-labelledby="cfg-top" data-cfg="top">
+                <button type="button" class="swatch" role="radio" aria-checked="true" style="--c:#2b2b2e" data-value="#2b2b2e" data-name="Графит" title="Графит" aria-label="Графит"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#4a5240" data-value="#4a5240" data-name="Олива" title="Олива" aria-label="Олива"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#5b2a31" data-value="#5b2a31" data-name="Бордо" title="Бордо" aria-label="Бордо"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#243449" data-value="#243449" data-name="Индиго" title="Индиго" aria-label="Индиго"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#6a4a33" data-value="#6a4a33" data-name="Орех" title="Орех" aria-label="Орех"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#ddd3c4" data-value="#ddd3c4" data-name="Крем" title="Крем" aria-label="Крем"></button>
+              </div>
+            </div>
+            <div class="cfg__row">
+              <span class="cfg__label" id="cfg-base">Низ</span>
+              <div class="swatches" role="radiogroup" aria-labelledby="cfg-base" data-cfg="base">
+                <button type="button" class="swatch" role="radio" aria-checked="true" style="--c:#b8b0a6" data-value="#b8b0a6" data-name="Тёплый серый" title="Тёплый серый" aria-label="Тёплый серый"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#e6dfd2" data-value="#e6dfd2" data-name="Крем" title="Крем" aria-label="Крем"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#b08a62" data-value="#b08a62" data-name="Дуб" title="Дуб" aria-label="Дуб"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#5d664f" data-value="#5d664f" data-name="Олива" title="Олива" aria-label="Олива"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#38383c" data-value="#38383c" data-name="Графит" title="Графит" aria-label="Графит"></button>
+              </div>
+            </div>
+            <div class="cfg__row">
+              <span class="cfg__label" id="cfg-stone">Фартук</span>
+              <div class="swatches" role="radiogroup" aria-labelledby="cfg-stone" data-cfg="stone">
+                <button type="button" class="swatch" role="radio" aria-checked="true" style="--c:#d9bf9a" data-value="#d9bf9a" data-name="Травертин" title="Травертин" aria-label="Травертин"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#ece8e1" data-value="#ece8e1" data-name="Белый мрамор" title="Белый мрамор" aria-label="Белый мрамор"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#8d9488" data-value="#8d9488" data-name="Зелёный оникс" title="Зелёный оникс" aria-label="Зелёный оникс"></button>
+                <button type="button" class="swatch" role="radio" aria-checked="false" style="--c:#3a3a40" data-value="#3a3a40" data-name="Чёрный мрамор" title="Чёрный мрамор" aria-label="Чёрный мрамор"></button>
+              </div>
+            </div>
+          </div>
+          <div class="cfg__side">
+            <div class="cfg__tools">
+              <button type="button" class="chip-btn" aria-pressed="true" data-kitchen-light><svg aria-hidden="true"><use href="#i-bulb"/></svg>Свет</button>
+              <button type="button" class="chip-btn" data-kitchen-random><svg aria-hidden="true"><use href="#i-shuffle"/></svg>Удивить</button>
+            </div>
+            <button type="button" class="btn btn--gold btn--sm" data-kitchen-order>Хочу такую кухню</button>
+          </div>
+          <p class="cfg__summary" aria-live="polite">Ваша комбинация: <b data-kitchen-summary>верх — графит, низ — тёплый серый, фартук — травертин</b></p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================== Бегущая строка ====================== -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <div class="marquee__group"><span>Кухни</span><i></i><span>Шкафы-купе</span><i></i><span>Гардеробные</span><i></i><span>Гостиные</span><i></i><span>Спальни</span><i></i><span>Прихожие</span><i></i><span>Столовые</span><i></i><span>Детские</span><i></i></div>
+      <div class="marquee__group"><span>Кухни</span><i></i><span>Шкафы-купе</span><i></i><span>Гардеробные</span><i></i><span>Гостиные</span><i></i><span>Спальни</span><i></i><span>Прихожие</span><i></i><span>Столовые</span><i></i><span>Детские</span><i></i></div>
+    </div>
+  </div>
+
+  <!-- ====================== Категории ====================== -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head section-head--row">
+        <p class="eyebrow" data-reveal>Каталог</p>
+        <h2 class="h2" data-reveal>Мебель для <em class="accent">каждой</em> комнаты</h2>
+        <a class="link-arrow" href="catalog.html" data-reveal>Весь каталог <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+
+      <div class="bento">
+        <a class="tile tile--xl" href="catalog.html?cat=kitchen" data-reveal="zoom">
+          <img src="assets/img/kitchen-olive.jpg" alt="Кухня с островом в оливковом цвете" loading="lazy" width="1264" height="848">
+          <div class="tile__body"><div><h3 class="tile__title">Кухни</h3><p class="tile__meta">Прямые · угловые · с островом</p></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile" href="catalog.html?cat=wardrobe" data-reveal="zoom" style="--d:.08s">
+          <img src="assets/img/wardrobe-sliding-sm.jpg" alt="Встроенный шкаф-купе" loading="lazy" width="720" height="483">
+          <div class="tile__body"><div><h3 class="tile__title">Шкафы и гардеробные</h3></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile" href="catalog.html?cat=living" data-reveal="zoom" style="--d:.16s">
+          <img src="assets/img/living-room-sm.jpg" alt="Гостиная с ТВ-зоной" loading="lazy" width="720" height="483">
+          <div class="tile__body"><div><h3 class="tile__title">Гостиные</h3></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile" href="catalog.html?cat=bedroom" data-reveal="zoom" style="--d:.08s">
+          <img src="assets/img/bedroom-sm.jpg" alt="Спальня с мягким изголовьем" loading="lazy" width="720" height="483">
+          <div class="tile__body"><div><h3 class="tile__title">Спальни</h3></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile" href="catalog.html?cat=hallway" data-reveal="zoom" style="--d:.16s">
+          <img src="assets/img/hallway-sm.jpg" alt="Прихожая с банкеткой и зеркалом" loading="lazy" width="720" height="483">
+          <div class="tile__body"><div><h3 class="tile__title">Прихожие</h3></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile tile--wide" href="catalog.html?cat=dining" data-reveal="zoom">
+          <img src="assets/img/dining.jpg" alt="Обеденная группа: стол и стулья" loading="lazy" width="1264" height="848">
+          <div class="tile__body"><div><h3 class="tile__title">Столовые</h3><p class="tile__meta">Столы и стулья</p></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+        <a class="tile tile--wide" href="catalog.html?cat=kids" data-reveal="zoom" style="--d:.08s">
+          <img src="assets/img/kids-room.jpg" alt="Детская комната с кроватью-домиком" loading="lazy" width="1264" height="848">
+          <div class="tile__body"><div><h3 class="tile__title">Детские</h3><p class="tile__meta">Кровати · шкафы · рабочие места</p></div><span class="tile__go"><svg aria-hidden="true"><use href="#i-arrow"/></svg></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Интерактивный интерьер ====================== -->
+  <section class="section section--alt" id="room">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Интерьер по точкам</p>
+        <h2 class="h2" data-reveal>Загляните <em class="accent">внутрь</em> гостиной</h2>
+        <p class="lead" data-reveal>Нажимайте на золотые точки — расскажем, из чего сделан каждый предмет и сколько он стоит.</p>
+      </div>
+
+      <div class="room" data-room>
+        <div class="room__media" data-reveal="zoom">
+          <img src="assets/img/living-room.jpg" alt="Гостиная: ТВ-зона с рейками, стеллаж, диван, журнальный стол и кресло" loading="lazy" width="1264" height="848">
+          <button type="button" class="hotspot" style="--x:50%;--y:62%" data-spot="0"><i></i><span class="hotspot__label">ТВ-зона</span><span class="visually-hidden">ТВ-зона с реечной панелью</span></button>
+          <button type="button" class="hotspot" style="--x:75%;--y:44%;--delay:.4s" data-spot="1"><i></i><span class="hotspot__label">Стеллаж</span><span class="visually-hidden">Стеллаж</span></button>
+          <button type="button" class="hotspot" style="--x:19%;--y:70%;--delay:.8s" data-spot="2"><i></i><span class="hotspot__label">Диван</span><span class="visually-hidden">Диван</span></button>
+          <button type="button" class="hotspot" style="--x:50%;--y:76%;--delay:1.2s" data-spot="3"><i></i><span class="hotspot__label">Журнальный стол</span><span class="visually-hidden">Журнальный стол</span></button>
+          <button type="button" class="hotspot" style="--x:82%;--y:66%;--delay:1.6s" data-spot="4"><i></i><span class="hotspot__label">Кресло</span><span class="visually-hidden">Кресло с пуфом</span></button>
+        </div>
+
+        <aside class="room__panel" data-reveal="right" aria-live="polite">
+          <p class="room__count"><span data-room-index>01</span> / 05</p>
+          <div class="room__card" data-room-card>
+            <h3 class="room__name" data-room-name>ТВ-зона с реечной панелью</h3>
+            <p class="room__desc" data-room-desc>Парящая тумба 2,4 м и панель из вертикальных реек в шпоне ореха. Контурная подсветка включается с пульта.</p>
+            <p class="room__price" data-room-price>от 78 000 ₽</p>
+          </div>
+          <div class="room__nav" data-room-nav></div>
+          <a class="link-arrow" href="catalog.html?cat=living">Гостиные в каталоге <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Популярное ====================== -->
+  <section class="section" id="popular">
+    <div class="container">
+      <div class="section-head section-head--wide">
+        <p class="eyebrow" data-reveal>Популярные модели</p>
+        <h2 class="h2" data-reveal>Выбирают <em class="accent">чаще</em> всего</h2>
+        <div class="tabs tabs--scroll" role="tablist" aria-label="Категории" data-home-tabs data-reveal></div>
+      </div>
+      <div class="grid-products" data-home-grid aria-live="polite"></div>
+      <div style="margin-top:clamp(32px,4vw,56px);text-align:center" data-reveal>
+        <a class="btn btn--line" href="catalog.html">Весь каталог <svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Калькулятор ====================== -->
+  <section class="section section--alt" id="calc">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal>Калькулятор</p>
+        <h2 class="h2" data-reveal>Узнайте стоимость <em class="accent">за минуту</em></h2>
+        <p class="lead" data-reveal>Двигайте ползунок и выбирайте материалы — цена пересчитывается сразу.</p>
+      </div>
+
+      <div class="calc" data-calc data-reveal>
+        <form class="calc__form" onsubmit="return false" novalidate>
+          <fieldset class="calc__group">
+            <legend class="calc__legend">Что считаем</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="type" value="kitchen" checked><span>Кухня</span></label>
+              <label class="option"><input type="radio" name="type" value="wardrobe"><span>Шкаф-купе</span></label>
+              <label class="option"><input type="radio" name="type" value="walkin"><span>Гардеробная</span></label>
+              <label class="option"><input type="radio" name="type" value="hallway"><span>Прихожая</span></label>
+              <label class="option"><input type="radio" name="type" value="living"><span>Гостиная</span></label>
+            </div>
+          </fieldset>
+
+          <div class="calc__group">
+            <label class="calc__legend" for="calc-length">Длина мебели <b><span data-calc-length>3,0</span> м</b></label>
+            <input class="range" id="calc-length" type="range" name="size" min="1" max="8" step="0.1" value="3">
+            <div class="range__scale" aria-hidden="true"><span>1 м</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8 м</span></div>
+          </div>
+
+          <fieldset class="calc__group">
+            <legend class="calc__legend">Материал фасадов</legend>
+            <div class="options">
+              <label class="option"><input type="radio" name="material" value="ldsp" checked><span>ЛДСП</span></label>
+              <label class="option"><input type="radio" name="material" value="film"><span>МДФ в плёнке</span></label>
+              <label class="option"><input type="radio" name="material" value="enamel"><span>МДФ эмаль</span></label>
+              <label class="option"><input type="radio" name="material" value="veneer"><span>Шпон</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="calc__group">
+            <legend class="calc__legend">Дополнительно</legend>
+            <div class="options">
+              <label class="option option--check"><input type="checkbox" name="led" checked><span>Подсветка</span></label>
+              <label class="option option--check"><input type="checkbox" name="hardware"><span>Премиум-фурнитура</span></label>
+              <label class="option option--check" data-only="kitchen"><input type="checkbox" name="stone"><span>Каменная столешница</span></label>
+              <label class="option option--check"><input type="checkbox" name="install" checked><span>Доставка и монтаж</span></label>
+            </div>
+          </fieldset>
+        </form>
+
+        <div class="calc__result">
+          <p class="eyebrow">Предварительно</p>
+          <p class="calc__total" aria-live="polite"><small>от</small><span data-calc-total>0</span> ₽</p>
+          <dl class="calc__list">
+            <div><dt>Мебель</dt><dd data-calc-what>Кухня, 3,0 м</dd></div>
+            <div><dt>Фасады</dt><dd data-calc-material>ЛДСП</dd></div>
+            <div><dt>Цена за метр</dt><dd data-calc-meter>—</dd></div>
+            <div><dt>Срок изготовления</dt><dd data-calc-days>—</dd></div>
+          </dl>
+          <p class="calc__note">Расчёт ориентировочный. Точную стоимость назовём после бесплатного замера и 3D-проекта.</p>
+          <button class="btn btn--gold btn--block" type="button" data-calc-order>Получить точный расчёт <svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Этапы ====================== -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow eyebrow--center" data-reveal>Как мы работаем</p>
+        <h2 class="h2" data-reveal>Пять шагов до <em class="accent">новой</em> мебели</h2>
+      </div>
+
+      <ol class="steps" data-steps>
+        <li class="step" data-reveal><span class="step__num"></span><span class="step__time">День 1</span><h3 class="step__title">Заявка и консультация</h3><p class="step__text">Обсуждаем задачу, бюджет и стиль. Подсказываем решения и называем вилку цен.</p></li>
+        <li class="step" data-reveal style="--d:.08s"><span class="step__num"></span><span class="step__time">1–2 дня</span><h3 class="step__title">Бесплатный замер</h3><p class="step__text">Замерщик приезжает с образцами материалов и снимает точные размеры помещения.</p></li>
+        <li class="step" data-reveal style="--d:.16s"><span class="step__num"></span><span class="step__time">2–3 дня</span><h3 class="step__title">3D-проект и договор</h3><p class="step__text">Показываем, как мебель будет выглядеть в интерьере, и фиксируем цену в договоре.</p></li>
+        <li class="step" data-reveal style="--d:.24s"><span class="step__num"></span><span class="step__time">от 14 дней</span><h3 class="step__title">Производство</h3><p class="step__text">Раскрой, кромка, покраска и сборка. Проверяем каждую деталь перед отгрузкой.</p></li>
+        <li class="step" data-reveal style="--d:.32s"><span class="step__num"></span><span class="step__time">1–2 дня</span><h3 class="step__title">Доставка и монтаж</h3><p class="step__text">Привозим, собираем, подключаем подсветку и убираем за собой. Вы принимаете работу.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ====================== О компании ====================== -->
+  <section class="section section--alt" id="about">
+    <div class="container">
+      <div class="about">
+        <div class="about__media" data-reveal="left">
+          <div class="about__img" data-parallax><img src="assets/img/walkin-closet.jpg" alt="Гардеробная с подсветкой полок" loading="lazy" width="1264" height="848"></div>
+          <div class="about__badge"><b>3D</b><span>проект до заказа</span></div>
+        </div>
+        <div class="about__copy">
+          <p class="eyebrow" data-reveal>О компании</p>
+          <h2 class="h2" data-reveal>Делаем мебель, которая <em class="accent">подходит</em> именно вам</h2>
+          <p data-reveal>«Мир Мебели» — это мебель по индивидуальным размерам: от небольшой прихожей до кухни с островом. Мы не продаём готовые гарнитуры «как есть» — каждую модель из каталога адаптируем под ваше помещение, привычки и бюджет.</p>
+          <p data-reveal>Вы выбираете цвет, материал фасадов, наполнение и фурнитуру, а мы показываем результат в 3D ещё до начала производства. Так вы точно знаете, что получите.</p>
+          <a class="btn btn--line" href="#contacts" data-reveal>Обсудить проект <svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+
+      <div class="features" style="margin-top:clamp(48px,7vw,96px)" data-features>
+        <article class="feature" data-reveal>
+          <div class="feature__icon"><svg aria-hidden="true"><use href="#i-ruler"/></svg></div>
+          <h3 class="feature__title">Точно под размер</h3>
+          <p class="feature__text">Учитываем ниши, скосы, коммуникации и розетки — мебель встаёт без щелей.</p>
+        </article>
+        <article class="feature" data-reveal style="--d:.08s">
+          <div class="feature__icon"><svg aria-hidden="true"><use href="#i-cube"/></svg></div>
+          <h3 class="feature__title">3D-проект бесплатно</h3>
+          <p class="feature__text">Увидите будущую мебель в своём интерьере и внесёте правки до заказа.</p>
+        </article>
+        <article class="feature" data-reveal style="--d:.16s">
+          <div class="feature__icon"><svg aria-hidden="true"><use href="#i-truck"/></svg></div>
+          <h3 class="feature__title">Доставка и монтаж</h3>
+          <p class="feature__text">Привозим в удобное время, собираем аккуратно и вывозим упаковку.</p>
+        </article>
+        <article class="feature" data-reveal style="--d:.24s">
+          <div class="feature__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div>
+          <h3 class="feature__title">Гарантия по договору</h3>
+          <p class="feature__text">Сроки, цена и гарантийные обязательства закреплены документально.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FAQ ====================== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="faq">
+        <div class="faq__aside">
+          <p class="eyebrow" data-reveal>Вопросы и ответы</p>
+          <h2 class="h2" data-reveal>Отвечаем на <em class="accent">частые</em> вопросы</h2>
+          <p class="lead" data-reveal>Не нашли ответ? Напишите или позвоните — подскажем по вашему проекту.</p>
+          <button class="btn btn--gold" type="button" data-open-request="Вопрос с сайта" data-reveal>Задать вопрос</button>
+        </div>
+
+        <div class="acc" data-accordion data-reveal>
+          <div class="acc__item is-open">
+            <h3><button class="acc__btn" type="button" aria-expanded="true" aria-controls="faq-1" id="faq-b1">Сколько времени занимает изготовление?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-1" role="region" aria-labelledby="faq-b1"><div><p>Шкафы и прихожие — от 14 дней, кухни и гардеробные — от 21 дня. Точный срок зависит от материалов и сложности проекта, мы фиксируем его в договоре.</p></div></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-b2">Замер и дизайн-проект действительно бесплатные?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-2" role="region" aria-labelledby="faq-b2"><div><p>Да. Замерщик приезжает с образцами, снимает размеры и обсуждает пожелания. После этого мы готовим 3D-проект и смету — это ни к чему вас не обязывает.</p></div></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-b3">Можно ли изменить цвет или размеры модели из каталога?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-3" role="region" aria-labelledby="faq-b3"><div><p>Конечно. Модели в каталоге — это примеры. Любую из них мы пересчитаем под ваши размеры, подберём другой цвет фасадов, столешницу, ручки и внутреннее наполнение.</p></div></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-b4">Из каких материалов вы делаете мебель?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-4" role="region" aria-labelledby="faq-b4"><div><p>Корпуса — из влагостойкой ЛДСП, фасады — ЛДСП, МДФ в плёнке или эмали, шпон. Столешницы — пластик, компакт-плита или искусственный камень. Образцы привозим на замер.</p></div></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-b5">Как происходит оплата?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-5" role="region" aria-labelledby="faq-b5"><div><p>При заключении договора вносится предоплата, остаток — после доставки и монтажа. Все суммы и сроки прописаны в договоре, цена после подписания не меняется.</p></div></div>
+          </div>
+          <div class="acc__item">
+            <h3><button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-6" id="faq-b6">Какая гарантия на мебель?<span class="acc__icon" aria-hidden="true"></span></button></h3>
+            <div class="acc__panel" id="faq-6" role="region" aria-labelledby="faq-b6"><div><p>Гарантия на мебель и монтаж — 24 месяца. Если что-то пойдёт не так, мастер приедет и устранит проблему.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== Заявка / контакты ====================== -->
+  <section class="section cta" id="contacts">
+    <div class="cta__bg" aria-hidden="true"><img src="assets/img/kitchen-graphite.jpg" alt="" loading="lazy" width="1264" height="848"></div>
+    <div class="container cta__inner">
+      <div class="cta__copy">
+        <p class="eyebrow" data-reveal>Контакты</p>
+        <h2 class="h2" data-reveal>Начнём с <em class="accent">бесплатного</em> замера</h2>
+        <p class="lead" data-reveal>Оставьте заявку — перезвоним, ответим на вопросы и договоримся об удобном времени.</p>
+        <ul class="contact-list" data-reveal>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-phone"/></svg></span><div><small>Телефон</small><a href="tel:+79000000000" data-site="phone">+7 (900) 000-00-00</a></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-mail"/></svg></span><div><small>Почта</small><a href="mailto:info@example.ru" data-site="email">info@example.ru</a></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-pin"/></svg></span><div><small>Салон</small><span class="v" data-site="address">г. Ваш город, ул. Примерная, 1</span></div></li>
+          <li><span class="ico"><svg aria-hidden="true"><use href="#i-clock"/></svg></span><div><small>Режим работы</small><span class="v" data-site="hours">Пн–Сб: 10:00–19:00, Вс: выходной</span></div></li>
+        </ul>
+      </div>
+
+      <div class="form-card" data-reveal="right">
+        <form class="form" data-form novalidate>
+          <h3 class="form__title">Заявка на замер</h3>
+          <p class="form__sub">Перезвоним в рабочее время</p>
+          <input type="hidden" name="subject" value="Заявка на замер">
+          <div class="field"><label for="f-name">Ваше имя</label><input class="input" id="f-name" name="name" type="text" autocomplete="name" placeholder="Как к вам обращаться" required><span class="field__error" role="alert"></span></div>
+          <div class="field"><label for="f-phone">Телефон</label><input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 (___) ___-__-__" required data-phone><span class="field__error" role="alert"></span></div>
+          <div class="field"><label for="f-msg">Комментарий</label><textarea class="input" id="f-msg" name="message" placeholder="Например: кухня 3,2 м, угловая"></textarea></div>
+          <label class="check"><input type="checkbox" name="agree" required><span>Согласен на обработку персональных данных в соответствии с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
+          <button class="btn btn--gold btn--block" type="submit">Отправить заявку</button>
+          <p class="form__status" data-form-status hidden role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="logo" href="#top" aria-label="Мир Мебели — на главную">
+        <svg class="logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+        <span class="logo__text">
+          <span class="logo__name">Мир <b>Мебели</b></span>
+          <span class="logo__tag">Мебель, созданная для жизни</span>
+        </span>
+      </a>
+        <p>Кухни, шкафы, гостиные, спальни и прихожие по индивидуальным размерам — от идеи и замера до монтажа.</p>
+        <div class="socials" data-socials>
+          <a class="icon-btn" href="#" data-social="telegram" aria-label="Telegram" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-tg"/></svg></a>
+          <a class="icon-btn" href="#" data-social="whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg></a>
+          <a class="icon-btn" href="#" data-social="vk" aria-label="ВКонтакте" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-vk"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Каталог</h4>
+        <ul class="footer__links">
+          <li><a href="catalog.html?cat=kitchen">Кухни</a></li>
+          <li><a href="catalog.html?cat=wardrobe">Шкафы и гардеробные</a></li>
+          <li><a href="catalog.html?cat=living">Гостиные</a></li>
+          <li><a href="catalog.html?cat=bedroom">Спальни</a></li>
+          <li><a href="catalog.html?cat=hallway">Прихожие</a></li>
+          <li><a href="catalog.html?cat=dining">Столовые</a></li>
+          <li><a href="catalog.html?cat=kids">Детские</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Покупателям</h4>
+        <ul class="footer__links">
+          <li><a href="#calc">Калькулятор стоимости</a></li>
+          <li><a href="#process">Как мы работаем</a></li>
+          <li><a href="#about">О компании</a></li>
+          <li><a href="#faq">Вопросы и ответы</a></li>
+          <li><a href="privacy.html">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul class="footer__links">
+          <li><a href="tel:+79000000000" data-site="phone">+7 (900) 000-00-00</a></li>
+          <li><a href="mailto:info@example.ru" data-site="email">info@example.ru</a></li>
+          <li><span class="muted" data-site="address">г. Ваш город, ул. Примерная, 1</span></li>
+          <li><span class="muted" data-site="hours">Пн–Сб: 10:00–19:00, Вс: выходной</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span data-year>2026</span> «Мир Мебели». Все права защищены.</span>
+      <span>Цены на сайте носят информационный характер и не являются публичной офертой.</span>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" aria-label="Наверх" data-to-top><svg aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>
