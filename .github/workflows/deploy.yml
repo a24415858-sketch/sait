@@ -5,9 +5,13 @@
 #   FTP_SERVER    — адрес FTP-сервера (из панели хостинга)
 #   FTP_USERNAME  — логин FTP
 #   FTP_PASSWORD  — пароль FTP
-#   FTP_DIR       — (необязательно) папка сайта на сервере, обязательно со слэшем на конце,
-#                   например  /www/sait.ezegames.ru/  или  /public_html/
+#   FTP_DIR       — (необязательно) папка сайта относительно корня FTP-аккаунта,
+#                   со слэшем на конце. Если аккаунт открывается сразу в папке сайта —  ./
 #   FTP_PROTOCOL  — (необязательно) ftp или ftps, по умолчанию ftp
+#
+# Перед выгрузкой сценарий проверяет, что папка FTP_DIR действительно открывается
+# по адресу SITE_URL. Если нет — выгрузка останавливается, чтобы не записать файлы
+# в папку другого сайта.
 name: Выгрузка на хостинг
 
 on:
@@ -24,6 +28,9 @@ concurrency:
 permissions:
   contents: read
 
+env:
+  SITE_URL: http://sait.ezegames.ru
+
 jobs:
   deploy:
     name: FTP
@@ -32,6 +39,8 @@ jobs:
       FTP_SERVER: ${{ secrets.FTP_SERVER }}
       FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
       FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_DIR: ${{ secrets.FTP_DIR }}
+      FTP_PROTOCOL: ${{ secrets.FTP_PROTOCOL }}
     steps:
       - name: Проверка секретов
         id: check
@@ -42,6 +51,32 @@ jobs:
             echo "ready=false" >> "$GITHUB_OUTPUT"
             echo "::warning::Выгрузка пропущена: не заданы секреты FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (Settings → Secrets and variables → Actions)."
           fi
+
+      - name: Проверка, что папка на сервере — это папка сайта
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          set -uo pipefail
+          dir="${FTP_DIR:-./}"; dir="${dir#./}"; dir="${dir#/}"
+          if [ -n "$dir" ]; then dir="${dir%/}/"; fi
+          probe="deploy-probe-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.txt"
+          token="mir-mebeli-$(openssl rand -hex 8)"
+          printf '%s' "$token" > "$RUNNER_TEMP/$probe"
+          opts=(--silent --show-error --connect-timeout 20 --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD")
+          if [ "${FTP_PROTOCOL:-ftp}" = "ftps" ]; then opts+=(--ssl-reqd); fi
+
+          if ! curl "${opts[@]}" -T "$RUNNER_TEMP/$probe" "ftp://$FTP_SERVER/$dir$probe"; then
+            echo "::error::Не удалось записать файл в папку FTP_DIR. Проверьте адрес сервера, логин, пароль и то, что папка существует."
+            exit 1
+          fi
+          sleep 3
+          got="$(curl -sS -L -k --max-time 30 "$SITE_URL/$probe?t=$RANDOM" || true)"
+          curl "${opts[@]}" -Q "*DELE $dir$probe" --list-only -o /dev/null "ftp://$FTP_SERVER/" || true
+
+          if [ "$got" != "$token" ]; then
+            echo "::error::Папка FTP_DIR не является папкой сайта $SITE_URL: файл, записанный по FTP, по адресу сайта не открылся. Выгрузка остановлена, чтобы не записать файлы в папку другого сайта."
+            exit 1
+          fi
+          echo "Папка на сервере соответствует $SITE_URL"
 
       - name: Получение файлов сайта
         if: steps.check.outputs.ready == 'true'
@@ -62,3 +97,14 @@ jobs:
             .github/**
             **/node_modules/**
             README.md
+
+      - name: Проверка сайта после выгрузки
+        if: steps.check.outputs.ready == 'true'
+        run: |
+          sleep 3
+          if curl -sS -L -k --max-time 30 "$SITE_URL/?t=$RANDOM" | grep -q "Мир Мебели"; then
+            echo "Сайт обновлён: $SITE_URL"
+          else
+            echo "::error::Файлы выгружены, но по адресу $SITE_URL сайт «Мир Мебели» не открывается."
+            exit 1
+          fi
