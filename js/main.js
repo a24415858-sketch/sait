@@ -107,7 +107,7 @@
     if (reduceMotion || ms <= 0) { onStep(to); return; }
     var start = performance.now();
     (function frame(now) {
-      var t = Math.min(1, (now - start) / ms);
+      var t = Math.max(0, Math.min(1, (now - start) / ms));
       var eased = 1 - Math.pow(1 - t, 3);
       onStep(from + (to - from) * eased);
       if (t < 1) requestAnimationFrame(frame);
