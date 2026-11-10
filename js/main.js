@@ -105,13 +105,16 @@
   /* ---------- Счётчики ------------------------------------------------------- */
   function tween(from, to, ms, onStep) {
     if (reduceMotion || ms <= 0) { onStep(to); return; }
-    var start = performance.now();
-    (function frame(now) {
-      var t = Math.max(0, Math.min(1, (now - start) / ms));
+    var start = performance.now(), done = false;
+    (function frame() {
+      if (done) return;
+      var t = Math.max(0, Math.min(1, (performance.now() - start) / ms));
       var eased = 1 - Math.pow(1 - t, 3);
       onStep(from + (to - from) * eased);
-      if (t < 1) requestAnimationFrame(frame);
-    })(start);
+      if (t < 1) requestAnimationFrame(frame); else done = true;
+    })();
+    // Страховка: если вкладка в фоне и кадры не идут, итоговое значение всё равно появится.
+    setTimeout(function () { if (!done) { done = true; onStep(to); } }, ms + 400);
   }
   function initCounters() {
     var items = $$('[data-count]');
