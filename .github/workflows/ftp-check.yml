@@ -1,0 +1,30 @@
+# Временная диагностика: показывает, какие папки видит FTP-аккаунт. Будет удалена.
+name: Проверка FTP
+on:
+  push:
+    branches: [arena/8b228cab-sait]
+    paths: ['.github/workflows/ftp-check.yml']
+permissions:
+  contents: read
+jobs:
+  check:
+    name: Папки
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      FTP_DIR: ${{ secrets.FTP_DIR }}
+    steps:
+      - name: Список папок
+        run: |
+          set +e
+          list() { curl -sS --connect-timeout 20 --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD" "ftp://$FTP_SERVER/$1" 2>&1 | awk '{ if ($1 ~ /^[dl-]/) print substr($1,1,1), $NF; else print $0 }' | head -40; }
+          out="FTP_DIR задан: $([ -n "$FTP_DIR" ] && echo да || echo нет)"
+          out+=$'\n'"PWD: $(curl -sS --connect-timeout 20 --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD" "ftp://$FTP_SERVER/" -Q PWD -v -o /dev/null 2>&1 | grep -E '^< 257' | head -1)"
+          for d in "" www/ www/sait.ezegames.ru/ sait.ezegames.ru/ public_html/ data/ data/www/ data/www/sait.ezegames.ru/; do
+            out+=$'\n'"== /$d"$'\n'"$(list "$d")"
+          done
+          echo "$out"
+          out="${out//'%'/'%25'}"; out="${out//$'\r'/}"; out="${out//$'\n'/'%0A'}"
+          echo "::notice title=FTP::$out"
