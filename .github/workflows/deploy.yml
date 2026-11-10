@@ -1,0 +1,64 @@
+# Автоматическая выгрузка сайта на хостинг по FTP после каждого пуша.
+#
+# Доступы к хостингу хранятся НЕ в репозитории, а в зашифрованных секретах GitHub:
+# Settings → Secrets and variables → Actions → New repository secret
+#   FTP_SERVER    — адрес FTP-сервера (из панели хостинга)
+#   FTP_USERNAME  — логин FTP
+#   FTP_PASSWORD  — пароль FTP
+#   FTP_DIR       — (необязательно) папка сайта на сервере, обязательно со слэшем на конце,
+#                   например  /www/sait.ezegames.ru/  или  /public_html/
+#   FTP_PROTOCOL  — (необязательно) ftp или ftps, по умолчанию ftp
+name: Выгрузка на хостинг
+
+on:
+  push:
+    branches:
+      - main
+      - arena/8b228cab-sait
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hosting
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: FTP
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    steps:
+      - name: Проверка секретов
+        id: check
+        run: |
+          if [ -n "$FTP_SERVER" ] && [ -n "$FTP_USERNAME" ] && [ -n "$FTP_PASSWORD" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Выгрузка пропущена: не заданы секреты FTP_SERVER, FTP_USERNAME, FTP_PASSWORD (Settings → Secrets and variables → Actions)."
+          fi
+
+      - name: Получение файлов сайта
+        if: steps.check.outputs.ready == 'true'
+        uses: actions/checkout@v4
+
+      - name: Выгрузка по FTP
+        if: steps.check.outputs.ready == 'true'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
+          server-dir: ${{ secrets.FTP_DIR || './' }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            **/node_modules/**
+            README.md
