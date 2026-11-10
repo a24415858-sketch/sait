@@ -56,7 +56,7 @@ jobs:
         if: steps.check.outputs.ready == 'true'
         run: |
           set -uo pipefail
-          dir="${FTP_DIR:-./}"; dir="${dir#./}"; dir="${dir#/}"
+          dir="$(printf '%s' "${FTP_DIR:-./}" | tr -d '[:space:]')"; dir="${dir#./}"; dir="${dir#/}"
           if [ -n "$dir" ]; then dir="${dir%/}/"; fi
           probe="deploy-probe-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.txt"
           token="mir-mebeli-$(openssl rand -hex 8)"
@@ -64,8 +64,18 @@ jobs:
           opts=(--silent --show-error --connect-timeout 20 --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD")
           if [ "${FTP_PROTOCOL:-ftp}" = "ftps" ]; then opts+=(--ssl-reqd); fi
 
-          if ! curl "${opts[@]}" -T "$RUNNER_TEMP/$probe" "ftp://$FTP_SERVER/$dir$probe"; then
-            echo "::error::Не удалось записать файл в папку FTP_DIR. Проверьте адрес сервера, логин, пароль и то, что папка существует."
+          if ! err="$(curl "${opts[@]}" -T "$RUNNER_TEMP/$probe" "ftp://$FTP_SERVER/$dir$probe" 2>&1)"; then
+            # Разбираемся, что именно не так: вход, папка или права на запись.
+            if list="$(curl "${opts[@]}" --list-only "ftp://$FTP_SERVER/" 2>&1)"; then
+              count="$(printf '%s\n' "$list" | grep -c . || true)"
+              known="$(printf '%s\n' "$list" | tr -d '\r' | grep -Ex 'www|public_html|htdocs|httpdocs|data|index\.html|sait\.ezegames\.ru' | paste -sd, - || true)"
+              why="Вход по FTP выполнен, но записать файл в папку «${dir:-./}» не удалось. В корне аккаунта записей: $count; из известных имён: ${known:-нет}."
+            else
+              why="Вход по FTP не выполнен: проверьте FTP_SERVER, FTP_USERNAME и FTP_PASSWORD."
+              err="$list"
+            fi
+            err="$(printf '%s' "$err" | tr '\r\n' '  ' | cut -c1-300)"
+            echo "::error::$why Ответ сервера: $err"
             exit 1
           fi
           sleep 3
