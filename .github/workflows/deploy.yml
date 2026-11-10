@@ -7,6 +7,7 @@
 #   FTP_PASSWORD  — пароль FTP
 #   FTP_DIR       — (необязательно) папка сайта относительно корня FTP-аккаунта,
 #                   со слэшем на конце. Если аккаунт открывается сразу в папке сайта —  ./
+#                   Если папка не подходит, сценарий сам пробует корень аккаунта.
 #   FTP_PROTOCOL  — (необязательно) ftp или ftps, по умолчанию ftp
 #
 # Перед выгрузкой сценарий проверяет, что папка FTP_DIR действительно открывается
@@ -53,40 +54,51 @@ jobs:
           fi
 
       - name: Проверка, что папка на сервере — это папка сайта
+        id: guard
         if: steps.check.outputs.ready == 'true'
         run: |
           set -uo pipefail
-          dir="$(printf '%s' "${FTP_DIR:-./}" | tr -d '[:space:]')"; dir="${dir#./}"; dir="${dir#/}"
-          if [ -n "$dir" ]; then dir="${dir%/}/"; fi
+          # Папка из секрета FTP_DIR, а если она не подходит — корень FTP-аккаунта.
+          # Подходит только та папка, файл из которой открывается по адресу сайта.
+          want="$(printf '%s' "${FTP_DIR:-./}" | tr -d '[:space:]')"; want="${want#./}"; want="${want#/}"
+          if [ -n "$want" ]; then want="${want%/}/"; fi
           probe="deploy-probe-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.txt"
           token="mir-mebeli-$(openssl rand -hex 8)"
           printf '%s' "$token" > "$RUNNER_TEMP/$probe"
           opts=(--silent --show-error --connect-timeout 20 --max-time 60 --user "$FTP_USERNAME:$FTP_PASSWORD")
           if [ "${FTP_PROTOCOL:-ftp}" = "ftps" ]; then opts+=(--ssl-reqd); fi
 
-          if ! err="$(curl "${opts[@]}" -T "$RUNNER_TEMP/$probe" "ftp://$FTP_SERVER/$dir$probe" 2>&1)"; then
-            # Разбираемся, что именно не так: вход, папка или права на запись.
-            if list="$(curl "${opts[@]}" --list-only "ftp://$FTP_SERVER/" 2>&1)"; then
-              count="$(printf '%s\n' "$list" | grep -c . || true)"
-              known="$(printf '%s\n' "$list" | tr -d '\r' | grep -Ex 'www|public_html|htdocs|httpdocs|data|index\.html|sait\.ezegames\.ru' | paste -sd, - || true)"
-              why="Вход по FTP выполнен, но записать файл в папку «${dir:-./}» не удалось. В корне аккаунта записей: $count; из известных имён: ${known:-нет}."
-            else
-              why="Вход по FTP не выполнен: проверьте FTP_SERVER, FTP_USERNAME и FTP_PASSWORD."
-              err="$list"
-            fi
-            err="$(printf '%s' "$err" | tr '\r\n' '  ' | cut -c1-300)"
-            echo "::error::$why Ответ сервера: $err"
+          if ! list="$(curl "${opts[@]}" --list-only "ftp://$FTP_SERVER/" 2>&1)"; then
+            list="$(printf '%s' "$list" | tr '\r\n' '  ' | cut -c1-300)"
+            echo "::error::Вход по FTP не выполнен: проверьте FTP_SERVER, FTP_USERNAME и FTP_PASSWORD. Ответ сервера: $list"
             exit 1
           fi
-          sleep 3
-          got="$(curl -sS -L -k --max-time 30 "$SITE_URL/$probe?t=$RANDOM" || true)"
-          curl "${opts[@]}" -Q "*DELE $dir$probe" --list-only -o /dev/null "ftp://$FTP_SERVER/" || true
 
-          if [ "$got" != "$token" ]; then
-            echo "::error::Папка FTP_DIR не является папкой сайта $SITE_URL: файл, записанный по FTP, по адресу сайта не открылся. Выгрузка остановлена, чтобы не записать файлы в папку другого сайта."
+          found=""; report=""
+          for dir in "$want" ""; do
+            if [ -n "$report" ] && [ "$dir" = "$want" ]; then continue; fi
+            name="${dir:-./}"
+            if ! err="$(curl "${opts[@]}" -T "$RUNNER_TEMP/$probe" "ftp://$FTP_SERVER/$dir$probe" 2>&1)"; then
+              err="$(printf '%s' "$err" | tr '\r\n' '  ' | cut -c1-200)"
+              report="$report Папка «$name»: записать файл не удалось ($err)."
+              continue
+            fi
+            sleep 3
+            got="$(curl -sS -L -k --max-time 30 "$SITE_URL/$probe?t=$RANDOM" || true)"
+            curl "${opts[@]}" -Q "*DELE $dir$probe" --list-only -o /dev/null "ftp://$FTP_SERVER/" || true
+            if [ "$got" = "$token" ]; then found="$name"; break; fi
+            report="$report Папка «$name»: файл записан, но по адресу сайта не открылся — это папка другого сайта."
+          done
+
+          if [ -z "$found" ]; then
+            echo "::error::Папка сайта $SITE_URL на FTP не найдена, выгрузка остановлена.$report"
             exit 1
           fi
-          echo "Папка на сервере соответствует $SITE_URL"
+          if [ "$found" != "${want:-./}" ]; then
+            echo "::warning::Папка из секрета FTP_DIR не подошла, сайт выгружается в «$found». Чтобы убрать предупреждение, задайте FTP_DIR = $found"
+          fi
+          echo "dir=$found" >> "$GITHUB_OUTPUT"
+          echo "Папка на сервере соответствует $SITE_URL: $found"
 
       - name: Получение файлов сайта
         if: steps.check.outputs.ready == 'true'
@@ -100,7 +112,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ${{ secrets.FTP_PROTOCOL || 'ftp' }}
-          server-dir: ${{ secrets.FTP_DIR || './' }}
+          server-dir: ${{ steps.guard.outputs.dir }}
           exclude: |
             **/.git*
             **/.git*/**
